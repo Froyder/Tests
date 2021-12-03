@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
     private fun setUI() {
         toDetailsActivityButton.setOnClickListener {
             startActivity(DetailsActivity.getIntent(this, totalCount))
+            testTV.text = "Button clicked!"
         }
         setQueryListener()
         setRecyclerView()
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val query = searchEditText.text.toString()
                 if (query.isNotBlank()) {
+                    testTV.text = query
                     presenter.searchGitHub(query)
                     return@OnEditorActionListener true
                 } else {
